@@ -9,4 +9,14 @@ export default [
       },
     ],
   },
+  {
+    find: "object,objectType",
+    replacements: [
+      {
+        match: /([A-Za-z]+\()(e)(\)\{)([A-Za-z]+\([^)]*\))/gm,
+        replace: `$1$2$3 console.log($2);
+        $4`,
+      },
+    ],
+  },
 ];
