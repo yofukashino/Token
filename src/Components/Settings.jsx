@@ -16,7 +16,7 @@ export const Settings = () => {
     <div>
       <SwitchItem
         note="Get a confirmation/error toast when copying your token."
-        {...util.useSetting(SettingValues, "defaultSettings")}>
+        {...util.useSetting(SettingValues, "showToast", defaultSettings.showToast)}>
         Pop-up/Toast
       </SwitchItem>
     </div>
