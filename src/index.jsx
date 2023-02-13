@@ -1,6 +1,4 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-import { Injector, Logger, settings } from "replugged";
+import { Injector, Logger, settings, webpack } from "replugged";
 
 import { defaultSettings } from "./lib/consts.jsx";
 
@@ -12,7 +10,7 @@ export const PluginInjector = new Injector();
 
 export const SettingValues = await settings.init("Tharki.Token", defaultSettings);
 
-import { LoginFormUtils } from "./lib/requiredModules.jsx";
+import { AuthBoxUtils } from "./lib/requiredModules.jsx";
 
 import { TokenMenuItem } from "./Components/MenuItem.jsx";
 
@@ -21,7 +19,11 @@ import { TokenLoginLink } from "./Components/TokenLogin.jsx";
 import { HBCM } from "./lib/HomeButtonContextMenuApi.jsx";
 
 const addTokenLogin = () => {
-  PluginInjector.before(LoginFormUtils, "gO", ([args]) => {
+  const functionKeyToPatch = webpack.getFunctionKeyBySource(
+    AuthBoxUtils.module,
+    /function.*n.*[^)]*.*\(\)\.block,.*[A-Za-z]+.*\}/,
+  );
+  PluginInjector.before(AuthBoxUtils.module, functionKeyToPatch, ([args]) => {
     const ForgotPasswordLink = args?.children?.find(
       (m) => m?.props?.children == "Forgot your password?",
     );

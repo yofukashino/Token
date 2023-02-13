@@ -1,5 +1,5 @@
 import { common, components } from "replugged";
-import { ConfirmationModal, LoginFormUtils, LoginUtils } from "../lib/requiredModules.jsx";
+import { AuthBoxUtils, ConfirmationModal, LoginUtils } from "../lib/requiredModules.jsx";
 const { modal } = common;
 const { Button, TextInput } = components;
 export const openTokenLoginForm = () =>
@@ -26,15 +26,15 @@ export const openTokenLoginForm = () =>
     </ConfirmationModal>
   ));
 export const TokenLoginLink = (
-  <LoginFormUtils.zx
+  <AuthBoxUtils.Buttons
     {...{
-      color: LoginFormUtils.zx.Colors.LINK,
-      look: LoginFormUtils.zx.Looks.LINK,
+      color: AuthBoxUtils.Buttons.Colors.LINK,
+      look: AuthBoxUtils.Buttons.Looks.LINK,
       className: "token-login",
       onClick: () => {
         openTokenLoginForm();
       },
     }}>
     Login With Token
-  </LoginFormUtils.zx>
+  </AuthBoxUtils.Buttons>
 );
