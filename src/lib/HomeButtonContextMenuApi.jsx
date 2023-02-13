@@ -9,6 +9,7 @@ const {
 export const HBCM = (window.HomeButtonContextMenuApi ||= new (class HomeButtonContextMenuApi {
   constructor() {
     this.items = new Map();
+    this.openContextMenu = this.openContextMenu.bind(this);
   }
   addItem(id, item) {
     this.items.set(id, item);
