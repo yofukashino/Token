@@ -1,9 +1,8 @@
-/* eslint-disable new-cap */
 import { common, components } from "replugged";
-import * as Icons from "./Icons.jsx";
-import { AuthenticationStore, DiscordNative } from "../lib/requiredModules.jsx";
-import { PluginLogger, SettingValues } from "../index.jsx";
-import { defaultSettings } from "../lib/consts.jsx";
+import * as Icons from "./Icons";
+import { AuthenticationStore, DiscordNative } from "../lib/requiredModules";
+import { PluginLogger, SettingValues } from "../index";
+import { defaultSettings } from "../lib/consts";
 const {
   ContextMenu: { MenuItem },
 } = components;
@@ -13,7 +12,7 @@ export const TokenMenuItem = (
     {...{
       label: "Copy Token",
       id: "copy-token",
-      icon: () => Icons.Auth("20", "20"),
+      icon: () => Icons.auth("20", "20"),
       action: () => {
         try {
           const token = AuthenticationStore.getToken();

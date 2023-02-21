@@ -1,3 +1,4 @@
+import * as Types from "./types";
 export default [
   {
     find: "Messages.DISCODO_DISABLED",
@@ -8,4 +9,4 @@ export default [
       },
     ],
   },
-];
+] as Types.DefaultTypes.PlaintextPatch[];

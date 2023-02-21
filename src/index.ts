@@ -1,8 +1,8 @@
 import { Injector, Logger, settings, webpack } from "replugged";
 
-import { defaultSettings } from "./lib/consts.jsx";
+import { defaultSettings } from "./lib/consts";
 
-import { registerSettings } from "./Components/Settings.jsx";
+import { registerSettings } from "./Components/Settings";
 
 export const PluginLogger = Logger.plugin("DevTools");
 
@@ -10,15 +10,15 @@ export const PluginInjector = new Injector();
 
 export const SettingValues = await settings.init("Tharki.Token", defaultSettings);
 
-import { AuthBoxUtils } from "./lib/requiredModules.jsx";
+import { AuthBoxUtils } from "./lib/requiredModules";
 
-import { TokenMenuItem } from "./Components/MenuItem.jsx";
+import { TokenMenuItem } from "./Components/MenuItem";
 
-import { TokenLoginLink } from "./Components/TokenLogin.jsx";
+import { TokenLoginLink } from "./Components/TokenLogin";
 
-import { HBCM } from "./lib/HomeButtonContextMenuApi.jsx";
+import { HBCM } from "./lib/HomeButtonContextMenuApi";
 
-const addTokenLogin = () => {
+const addTokenLogin = (): void => {
   const functionKeyToPatch = webpack.getFunctionKeyBySource(
     AuthBoxUtils.module,
     /function.*n.*[^)]*.*\(\)\.block,.*[A-Za-z]+.*\}/,
@@ -28,20 +28,20 @@ const addTokenLogin = () => {
       (m) => m?.props?.children == "Forgot your password?",
     );
     if (!ForgotPasswordLink) return;
-    const FPLIndex = args.children.indexOf(ForgotPasswordLink);
+    const FPLIndex = args.children.indexOf(ForgotPasswordLink) as number;
     args.children.splice(FPLIndex + 1, 0, TokenLoginLink);
   });
 };
 
-export const start = () => {
+export const start = (): void => {
   registerSettings();
   HBCM.addItem("Token", TokenMenuItem);
   addTokenLogin();
 };
 
-export const stop = () => {
+export const stop = (): void => {
   HBCM.removeItem("Token");
   PluginInjector.uninjectAll();
 };
 
-export { Settings } from "./Components/Settings.jsx";
+export { Settings } from "./Components/Settings";

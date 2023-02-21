@@ -1,9 +1,10 @@
 import { common, components } from "replugged";
-import { AuthBoxUtils, ConfirmationModal, LoginUtils } from "../lib/requiredModules.jsx";
+import { AuthBoxUtils, ConfirmationModal, LoginUtils } from "../lib/requiredModules";
+import * as Types from "../types";
 const { modal } = common;
 const { Button, TextInput } = components;
 export const openTokenLoginForm = () =>
-  modal.openModal((props) => (
+  modal.openModal((props: Types.TokenLoginModalProps) => (
     <ConfirmationModal
       {...{
         header: "Login With Token",

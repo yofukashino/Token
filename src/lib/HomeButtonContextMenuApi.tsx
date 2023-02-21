@@ -1,21 +1,22 @@
-/* eslint-disable no-multi-assign */
 import { common, components, util } from "replugged";
-import { NavBarClasses } from "./requiredModules.jsx";
-import { PluginInjector } from "../index.jsx";
+import { NavBarClasses } from "./requiredModules";
+import { PluginInjector } from "../index";
+import * as Types from "../types";
 const { contextMenu: ContextMenuApi } = common;
 const {
   ContextMenu: { ContextMenu, MenuItem },
 } = components;
-export const HBCM = (window.HomeButtonContextMenuApi ||= new (class HomeButtonContextMenuApi {
+class HomeButtonContextMenuApi {
+  items: Map<string, Types.ReactElement>;
   constructor() {
     this.items = new Map();
     this.openContextMenu = this.openContextMenu.bind(this);
   }
-  addItem(id, item) {
+  addItem(id: string, item: Types.ReactElement) {
     this.items.set(id, item);
     this.forceUpdate();
   }
-  removeItem(id) {
+  removeItem(id: string) {
     this.items.delete(id);
     this.forceUpdate();
   }
@@ -29,9 +30,11 @@ export const HBCM = (window.HomeButtonContextMenuApi ||= new (class HomeButtonCo
     });
     toForceUpdate.forceUpdate(() => toForceUpdate.forceUpdate(() => {}));
   }
-  openContextMenu(event) {
+  openContextMenu(event: Types.UIEvent) {
     const HomeButtonContextMenuItems = this.items.size
-      ? Array.from(this.items.values()).sort((a, b) => a?.props?.label?.localeCompare(b.label))
+      ? Array.from(this.items.values()).sort((a, b) =>
+          a?.props?.label?.localeCompare(b?.props?.label),
+        )
       : [
           <MenuItem
             {...{
@@ -40,11 +43,19 @@ export const HBCM = (window.HomeButtonContextMenuApi ||= new (class HomeButtonCo
             }}
           />,
         ];
-    const HomeButtonContextMenu = (props) => (
-      <ContextMenu {...props}>{...HomeButtonContextMenuItems}</ContextMenu>
+    const HomeButtonContextMenu = (props: Types.ExtendedContextMenuArgs) => (
+      <ContextMenu {...{ ...props, navId: "tharki" }}>{...HomeButtonContextMenuItems}</ContextMenu>
     );
-    ContextMenuApi.open(event, (e) => (
+    ContextMenuApi.open(event, ((e: Types.ContextMenuArgs) => (
       <HomeButtonContextMenu {...Object.assign({}, e, { onClose: ContextMenuApi.close })} />
-    ));
+    )) as unknown as Types.ContextMenu);
   }
-})());
+}
+
+export const HBCM = ((): Types.HomeButtonContextMenuApi => {
+  if (Object.hasOwnProperty.call(window, "HomeButtonContextMenuApi"))
+    return window.HomeButtonContextMenuApi;
+  window.HomeButtonContextMenuApi =
+    new HomeButtonContextMenuApi() as Types.HomeButtonContextMenuApi;
+  return window.HomeButtonContextMenuApi;
+})();
