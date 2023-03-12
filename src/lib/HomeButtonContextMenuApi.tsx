@@ -1,6 +1,4 @@
-import { common, components, util } from "replugged";
-import { NavBarClasses } from "./requiredModules";
-import { PluginInjector } from "../index";
+import { common, components } from "replugged";
 import * as Types from "../types";
 const { contextMenu: ContextMenuApi } = common;
 const {
@@ -14,27 +12,15 @@ class HomeButtonContextMenuApi {
   }
   addItem(id: string, item: Types.ReactElement) {
     this.items.set(id, item);
-    this.forceUpdate();
   }
   removeItem(id: string) {
     this.items.delete(id);
-    this.forceUpdate();
-  }
-  forceUpdate() {
-    const element = document.querySelector(`.${NavBarClasses.guilds}`);
-    if (!element) return;
-    const toForceUpdate = util.getOwnerInstance(element);
-    const forceRerender = PluginInjector.instead(toForceUpdate, "render", () => {
-      forceRerender();
-      return null;
-    });
-    toForceUpdate.forceUpdate(() => toForceUpdate.forceUpdate(() => {}));
   }
   openContextMenu(event: Types.UIEvent) {
     const HomeButtonContextMenuItems = this.items.size
-      ? Array.from(this.items.values()).sort((a, b) =>
-          a?.props?.label?.localeCompare(b?.props?.label),
-        )
+      ? Array.from(this.items.values())
+          .filter(Boolean)
+          .sort((a, b) => a?.props?.label?.localeCompare(b?.props?.label))
       : [
           <MenuItem
             {...{
@@ -52,10 +38,15 @@ class HomeButtonContextMenuApi {
   }
 }
 
-export const HBCM = ((): Types.HomeButtonContextMenuApi => {
-  if (Object.hasOwnProperty.call(window, "HomeButtonContextMenuApi"))
-    return window.HomeButtonContextMenuApi;
-  window.HomeButtonContextMenuApi =
-    new HomeButtonContextMenuApi() as Types.HomeButtonContextMenuApi;
-  return window.HomeButtonContextMenuApi;
-})();
+export const HBCM = await new Promise<Types.HomeButtonContextMenuApi>((resolve, reject) => {
+  try {
+    if (Object.hasOwnProperty.call(window, "HomeButtonContextMenuApi"))
+      resolve(window.HomeButtonContextMenuApi);
+    else
+      window.HomeButtonContextMenuApi =
+        new HomeButtonContextMenuApi() as Types.HomeButtonContextMenuApi;
+    resolve(window.HomeButtonContextMenuApi);
+  } catch (error) {
+    reject(error);
+  }
+});
