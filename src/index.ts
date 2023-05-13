@@ -10,7 +10,7 @@ export const PluginLogger = Logger.plugin("DevTools");
 
 export const PluginInjector = new Injector();
 
-export const SettingValues = await settings.init("Tharki.Token", defaultSettings);
+export const SettingValues = await settings.init("dev.tharki.Token", defaultSettings);
 
 import { TokenMenuItem } from "./Components/MenuItem";
 
