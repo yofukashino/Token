@@ -22,7 +22,6 @@ export const start = (): void => {
   registerSettings();
   HBCM.addItem("Token", TokenMenuItem);
   applyInjections();
-  console.log("gg");
 };
 
 export const stop = (): void => {
