@@ -10,7 +10,6 @@ export const registerSettings = (): void => {
     SettingValues.set(key as keyof Types.Settings, defaultSettings[key]);
   }
 };
-
 export const Settings = () => {
   return (
     <div>

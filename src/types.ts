@@ -88,9 +88,6 @@ export interface NavBarClasses {
   upsellTooltip: string;
   wrapper: string;
 }
-export interface Settings {
-  showToast: boolean;
-}
 export interface AuthBoxUtilsButtons extends ComponentClass {
   Colors: {
     BLACK: string;
@@ -358,4 +355,10 @@ export interface DiscordNative {
     setProgressBar: DefaultTypes.AnyFunction;
     setZoomFactor: DefaultTypes.AnyFunction;
   };
+}
+export interface GenericModule {
+  [key: string]: DefaultTypes.AnyFunction;
+}
+export interface Settings {
+  showToast: boolean;
 }

@@ -17,10 +17,9 @@ export const DiscordNative = webpack.getByProps(
 ) as unknown as Types.DiscordNative;
 
 export const AuthBoxUtils = {
-  module: webpack.getBySource(/\.joiningAsAvatar.*\.joiningAsUsername/) as unknown as Record<
-    string,
-    Types.DefaultTypes.AnyFunction
-  >,
+  module: webpack.getBySource(
+    /\.joiningAsAvatar.*\.joiningAsUsername/,
+  ) as unknown as Types.GenericModule,
   get Buttons() {
     return webpack.getExportsForProps(this.module, [
       "Colors",
@@ -35,8 +34,8 @@ export const ConfirmationModalModule = webpack.getBySource(
 ) as unknown as Types.DefaultTypes.ObjectExports;
 
 export const ConfirmationModal = webpack.getFunctionBySource(
-  "confirmButtonColor",
   ConfirmationModalModule,
+  "confirmButtonColor",
 ) as unknown as Types.ComponentClass;
 
 export const LoginUtils = webpack.getByProps("login", "logout") as unknown as Types.LoginUtils;
