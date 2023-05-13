@@ -29,13 +29,4 @@ export const AuthBoxUtils = {
   },
 };
 
-export const ConfirmationModalModule = webpack.getBySource(
-  "ConfirmModal",
-) as unknown as Types.DefaultTypes.ObjectExports;
-
-export const ConfirmationModal = webpack.getFunctionBySource(
-  ConfirmationModalModule,
-  "confirmButtonColor",
-) as unknown as Types.ComponentClass;
-
 export const LoginUtils = webpack.getByProps("login", "logout") as unknown as Types.LoginUtils;
