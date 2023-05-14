@@ -13,19 +13,11 @@ Install Link:
 
 ![image](https://tharki-god.github.io/files-random-host/bdpluginsassets/token.png)
 
-> ## Disclaimer
->
-> This Plugin isn't offically supported by replugged.
->
->**DO NOT ASK IN REPLUGGED SERVER FOR SUPPORT RELATED TO THIS PLUGIN.**
->
 > For issues related to plugin either DM the dev or ask in support server listed below.
 >
+>If making a post in support channel on replugged server then ping me!
 >
 > [![Support Server](https://discordapp.com/api/guilds/919649417005506600/widget.png?style=banner3)](https://discord.gg/SgKSKyh9gY)
 
-
-
-
-
 > For Contributing: [Make a pr thats all.]
+]
