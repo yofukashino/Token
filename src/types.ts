@@ -356,6 +356,26 @@ export interface DiscordNative {
     setZoomFactor: DefaultTypes.AnyFunction;
   };
 }
+export interface LocaleManager {
+  Messages: DefaultTypes.ObjectExports;
+  loadPromise: DefaultTypes.ObjectExports;
+  _chosenLocale: string;
+  _events: DefaultTypes.ObjectExports;
+  _eventsCount: number;
+  _getMessages: DefaultTypes.AnyFunction;
+  _getParsedMessages: DefaultTypes.AnyFunction;
+  _handleNewListener: DefaultTypes.AnyFunction;
+  _languages: Array<{
+    code: string;
+    enabled: boolean;
+    englishName: string;
+    name: string;
+    postgresLang: string;
+  }>;
+  _maxListeners: undefined | string;
+  _provider: DefaultTypes.ObjectExports;
+  _requestedLocale: string;
+}
 export interface GenericModule {
   [key: string]: DefaultTypes.AnyFunction;
 }

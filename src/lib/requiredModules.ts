@@ -16,6 +16,11 @@ export const DiscordNative = webpack.getByProps(
   "process",
 ) as unknown as Types.DiscordNative;
 
+export const LocaleManager = webpack.getByProps(
+  "Messages",
+  "_chosenLocale",
+) as unknown as Types.LocaleManager;
+
 export const AuthBoxUtils = {
   module: webpack.getBySource(
     /\.joiningAsAvatar.*\.joiningAsUsername/,
