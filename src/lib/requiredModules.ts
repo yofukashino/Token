@@ -5,33 +5,25 @@ export const NavBarClasses = Object.assign(
   webpack.getByProps("listItem"),
   webpack.getByProps("tree", "scroller"),
   webpack.getByProps("guilds", "base"),
-) as unknown as Types.NavBarClasses;
-export const AuthenticationStore = webpack.getByProps(
+) as Types.NavBarClasses;
+export const AuthenticationStore = webpack.getByProps<Types.AuthenticationStore>(
   "getToken",
   "getLoginStatus",
-) as unknown as Types.AuthenticationStore;
+);
 
-export const DiscordNative = webpack.getByProps(
-  "clipboard",
-  "process",
-) as unknown as Types.DiscordNative;
+export const DiscordNative = webpack.getByProps<Types.DiscordNative>("clipboard", "process");
 
-export const LocaleManager = webpack.getByProps(
-  "Messages",
-  "_chosenLocale",
-) as unknown as Types.LocaleManager;
+export const LocaleManager = webpack.getByProps<Types.LocaleManager>("Messages", "_chosenLocale");
 
+export const AuthBoxUtilsModule = webpack.getBySource<Types.GenericModule | string>(
+  /\.joiningAsAvatar.*\.joiningAsUsername/,
+);
 export const AuthBoxUtils = {
-  module: webpack.getBySource(
-    /\.joiningAsAvatar.*\.joiningAsUsername/,
-  ) as unknown as Types.GenericModule,
-  get Buttons() {
-    return webpack.getExportsForProps(this.module, [
-      "Colors",
-      "Looks",
-      "Sizes",
-    ]) as unknown as Types.AuthBoxUtilsButtons;
-  },
+  Buttons: webpack.getExportsForProps<Types.AuthBoxUtilsButtons>(AuthBoxUtilsModule, [
+    "Colors",
+    "Looks",
+    "Sizes",
+  ]),
 };
 
-export const LoginUtils = webpack.getByProps("login", "logout") as unknown as Types.LoginUtils;
+export const LoginUtils = webpack.getByProps<Types.LoginUtils>("login", "logout");

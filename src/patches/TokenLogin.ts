@@ -1,13 +1,14 @@
 import { webpack } from "replugged";
 import { PluginInjector } from "../index";
-import { AuthBoxUtils, LocaleManager } from "../lib/requiredModules";
+import { AuthBoxUtilsModule, LocaleManager } from "../lib/requiredModules";
 import { TokenLoginLink } from "../Components/TokenLogin";
+import * as Types from "../types";
 export const patchTokenLogin = (): void => {
   const functionKeyToPatch = webpack.getFunctionKeyBySource<string>(
-    AuthBoxUtils.module,
+    AuthBoxUtilsModule as string,
     /function\(\w+\){(.*|\n).*block,.*?\}\)}/,
   );
-  PluginInjector.before(AuthBoxUtils.module, functionKeyToPatch, ([args]) => {
+  PluginInjector.before(AuthBoxUtilsModule as Types.GenericModule, functionKeyToPatch, ([args]) => {
     const ForgotPasswordLink = args?.children?.find(
       (m) => m?.props?.children == LocaleManager.Messages.FORGOT_PASSWORD,
     );

@@ -10,7 +10,7 @@ const {
 export const TokenLoginForm = (props) => {
   const [token, setToken] = React.useState(null);
   const handleLogin = () => {
-    if (!Boolean(token)) return;
+    if (!token) return;
     LoginUtils.loginToken(token);
 
     props.onClose();

@@ -14,7 +14,7 @@ export const SettingValues = await settings.init("dev.tharki.Token", defaultSett
 
 import { TokenMenuItem } from "./Components/MenuItem";
 
-import { HBCM } from "./lib/HomeButtonContextMenuApi";
+import HBCM from "./lib/HomeButtonContextMenuApi";
 
 import { applyInjections } from "./patches/index";
 

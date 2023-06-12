@@ -9,7 +9,7 @@ Also Adds option to login from token on login form.
 Direct Download Link: [dev.tharki.Token.asar](https://github.com/Tharki-God/Token/releases/latest/download/dev.tharki.Token.asar)
 
 Install Link:
-[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=Tharki-God/Token&source=github)
+[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=dev.tharki.Token)
 
 ![image](https://tharki-god.github.io/files-random-host/bdpluginsassets/token.png)
 
