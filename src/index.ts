@@ -6,7 +6,7 @@ import { registerSettings } from "./Components/Settings";
 
 import "./style.css";
 
-export const PluginLogger = Logger.plugin("DevTools");
+export const PluginLogger = Logger.plugin("Token");
 
 export const PluginInjector = new Injector();
 
