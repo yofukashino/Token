@@ -1,9 +1,6 @@
-import { common, components } from "replugged";
-import * as Types from "../types";
-const { contextMenu: ContextMenuApi } = common;
-const {
-  ContextMenu: { ContextMenu },
-} = components;
+import { contextMenu as ContextMenuApi } from "replugged/common";
+import { ContextMenu } from "replugged/components";
+import Types from "../types";
 class HomeButtonContextMenuApi {
   items: Map<string, Types.ReactElement>;
   constructor() {
@@ -23,7 +20,9 @@ class HomeButtonContextMenuApi {
           .sort((a, b) => a?.props?.label?.localeCompare(b?.props?.label))
       : [];
     const HomeButtonContextMenu = (props) => (
-      <ContextMenu {...{ ...props, navId: "tharki" }}>{...HomeButtonContextMenuItems}</ContextMenu>
+      <ContextMenu.ContextMenu {...{ ...props, navId: "tharki" }}>
+        {...HomeButtonContextMenuItems}
+      </ContextMenu.ContextMenu>
     );
     ContextMenuApi.open(event, (e) => (
       <HomeButtonContextMenu {...Object.assign({}, e, { onClose: ContextMenuApi.close })} />

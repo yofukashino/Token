@@ -1,8 +1,9 @@
-import { components, util } from "replugged";
+import { util } from "replugged";
+import { SwitchItem } from "replugged/components";
 import { PluginLogger, SettingValues } from "../index";
-const { SwitchItem } = components;
-import * as Types from "../types";
 import { defaultSettings } from "../lib/consts";
+import Types from "../types";
+
 export const registerSettings = (): void => {
   for (const key in defaultSettings) {
     if (SettingValues.has(key as keyof Types.Settings)) return;

@@ -1,4 +1,4 @@
-import * as Types from "../types";
+import Types from "../types";
 export const auth = (width: number | string, height: number | string): Types.ReactElement => (
   <svg {...{ viewBox: "0 0 24 24", width, height }}>
     <path
@@ -11,3 +11,5 @@ export const auth = (width: number | string, height: number | string): Types.Rea
     />
   </svg>
 );
+
+export default { auth };

@@ -1,5 +1,5 @@
 import { webpack } from "replugged";
-import * as Types from "../types";
+import Types from "../types";
 export const NavBarClasses = Object.assign(
   {},
   webpack.getByProps("listItem"),
@@ -15,15 +15,6 @@ export const DiscordNative = webpack.getByProps<Types.DiscordNative>("clipboard"
 
 export const LocaleManager = webpack.getByProps<Types.LocaleManager>("Messages", "_chosenLocale");
 
-export const AuthBoxUtilsModule = webpack.getBySource<Types.GenericModule | string>(
-  /\.joiningAsAvatar.*\.joiningAsUsername/,
-);
-export const AuthBoxUtils = {
-  Buttons: webpack.getExportsForProps<Types.AuthBoxUtilsButtons>(AuthBoxUtilsModule, [
-    "Colors",
-    "Looks",
-    "Sizes",
-  ]),
-};
+export const WebAuth = webpack.getByProps<Types.WebAuth>("IncompatibleBrowser");
 
 export const LoginUtils = webpack.getByProps<Types.LoginUtils>("login", "logout");

@@ -1,14 +1,11 @@
-import { common, components } from "replugged";
-import * as Icons from "./Icons";
-import { AuthenticationStore, DiscordNative } from "../lib/requiredModules";
+import { toast as Toasts } from "replugged/common";
+import { ContextMenu } from "replugged/components";
 import { PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-const {
-  ContextMenu: { MenuItem },
-} = components;
-const { toast: Toasts } = common;
-export const TokenMenuItem = (
-  <MenuItem
+import { AuthenticationStore, DiscordNative } from "../lib/requiredModules";
+import Icons from "./Icons";
+export default (
+  <ContextMenu.MenuItem
     {...{
       label: "Copy Token",
       id: "copy-token",

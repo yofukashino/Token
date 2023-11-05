@@ -62,38 +62,42 @@ export interface NavBarClasses {
   upsellTooltip: string;
   wrapper: string;
 }
-export interface AuthBoxUtilsButtons extends ComponentClass {
-  Colors: {
-    BLACK: string;
-    BRAND: string;
-    BRAND_NEW: string;
-    CUSTOM: string;
-    GREEN: string;
-    LINK: string;
-    PRIMARY: string;
-    RED: string;
-    TRANSPARENT: string;
-    WHITE: string;
-    YELLOW: string;
+export interface WebAuth {
+  Button: ComponentClass & {
+    Colors: {
+      BLACK: string;
+      BRAND: string;
+      BRAND_NEW: string;
+      CUSTOM: string;
+      GREEN: string;
+      LINK: string;
+      PRIMARY: string;
+      RED: string;
+      TRANSPARENT: string;
+      WHITE: string;
+      YELLOW: string;
+    };
+    Looks: {
+      BLANK: string;
+      FILLED: string;
+      INVERTED: string;
+      LINK: string;
+      OUTLINED: string;
+    };
+    Sizes: {
+      ICON: string;
+      LARGE: string;
+      MAX: string;
+      MEDIUM: string;
+      MIN: string;
+      NONE: string;
+      SMALL: string;
+      TINY: string;
+      XLARGE: string;
+    };
   };
-  Looks: {
-    BLANK: string;
-    FILLED: string;
-    INVERTED: string;
-    LINK: string;
-    OUTLINED: string;
-  };
-  Sizes: {
-    ICON: string;
-    LARGE: string;
-    MAX: string;
-    MEDIUM: string;
-    MIN: string;
-    NONE: string;
-    SMALL: string;
-    TINY: string;
-    XLARGE: string;
-  };
+  IncompatibleBrowser: DefaultTypes.AnyFunction;
+  default: DefaultTypes.AnyFunction;
 }
 export enum ModalTransitionState {
   ENTERING,
@@ -354,3 +358,5 @@ export interface GenericModule extends Record<string, DefaultTypes.AnyFunction> 
 export interface Settings {
   showToast: boolean;
 }
+
+export * as default from "./types";

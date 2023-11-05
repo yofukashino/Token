@@ -1,12 +1,6 @@
-import { common, components } from "replugged";
-import { AuthBoxUtils, LoginUtils } from "../lib/requiredModules";
-const { React, modal: ModalUtils } = common;
-const {
-  Button,
-  Modal: { ModalRoot, ModalHeader, ModalContent, ModalCloseButton, ModalFooter },
-  Text,
-  TextInput,
-} = components;
+import { modal as ModalUtils, React } from "replugged/common";
+import { Button, Modal, Text, TextInput } from "replugged/components";
+import { LoginUtils, WebAuth } from "../lib/requiredModules";
 export const TokenLoginForm = (props) => {
   const [token, setToken] = React.useState(null);
   const handleLogin = () => {
@@ -16,8 +10,8 @@ export const TokenLoginForm = (props) => {
     props.onClose();
   };
   return (
-    <ModalRoot {...{ className: "login-with-token", size: "small", ...props }}>
-      <ModalHeader
+    <Modal.ModalRoot {...{ className: "login-with-token", size: "small", ...props }}>
+      <Modal.ModalHeader
         {...{
           className: "token-login-header",
         }}>
@@ -27,7 +21,7 @@ export const TokenLoginForm = (props) => {
           }}>
           Login With Token
         </Text>
-        <ModalCloseButton
+        <Modal.ModalCloseButton
           {...{
             onClick: props.onClose,
             style: {
@@ -36,8 +30,8 @@ export const TokenLoginForm = (props) => {
             },
           }}
         />
-      </ModalHeader>
-      <ModalContent>
+      </Modal.ModalHeader>
+      <Modal.ModalContent>
         <TextInput
           {...{
             value: token,
@@ -47,8 +41,8 @@ export const TokenLoginForm = (props) => {
             style: { marginBottom: "10px" },
           }}
         />
-      </ModalContent>
-      <ModalFooter>
+      </Modal.ModalContent>
+      <Modal.ModalFooter>
         <Button
           {...{
             color: Button.Colors.BRAND,
@@ -56,18 +50,18 @@ export const TokenLoginForm = (props) => {
           }}>
           Login
         </Button>
-      </ModalFooter>
-    </ModalRoot>
+      </Modal.ModalFooter>
+    </Modal.ModalRoot>
   );
 };
 export const TokenLoginLink = (
-  <AuthBoxUtils.Buttons
+  <WebAuth.Button
     {...{
-      color: AuthBoxUtils.Buttons.Colors.LINK,
-      look: AuthBoxUtils.Buttons.Looks.LINK,
+      color: WebAuth.Button.Colors.LINK,
+      look: WebAuth.Button.Looks.LINK,
       className: "token-login",
       onClick: () => ModalUtils.openModal((props) => <TokenLoginForm {...props} />),
     }}>
     Login With Token
-  </AuthBoxUtils.Buttons>
+  </WebAuth.Button>
 );
