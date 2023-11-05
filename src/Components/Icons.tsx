@@ -1,5 +1,4 @@
-import Types from "../types";
-export const auth = (width: number | string, height: number | string): Types.ReactElement => (
+export const auth = (width: number | string, height: number | string): React.ReactElement => (
   <svg {...{ viewBox: "0 0 24 24", width, height }}>
     <path
       {...{

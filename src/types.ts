@@ -1,14 +1,13 @@
 import { types as DefaultTypes } from "replugged";
 export { types as DefaultTypes } from "replugged";
-export { ReactElement, ComponentClass, MouseEvent } from "react";
-import { ComponentClass, ReactElement } from "react";
+export { Tree } from "replugged/dist/renderer/util";
 declare global {
   interface Window {
     HomeButtonContextMenuApi: HomeButtonContextMenuApi;
   }
 }
 export interface HomeButtonContextMenuApi {
-  items?: Map<string, ReactElement>;
+  items?: Map<string, React.ReactElement>;
   constructor?: DefaultTypes.AnyFunction;
   addItem?: DefaultTypes.AnyFunction;
   removeItem?: DefaultTypes.AnyFunction;
@@ -63,7 +62,7 @@ export interface NavBarClasses {
   wrapper: string;
 }
 export interface WebAuth {
-  Button: ComponentClass & {
+  Button: React.ComponentClass & {
     Colors: {
       BLACK: string;
       BRAND: string;
