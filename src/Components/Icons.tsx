@@ -18,5 +18,4 @@ export const auth = ({
   </svg>
 );
 
-
 export default { auth };

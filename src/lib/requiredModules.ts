@@ -6,7 +6,6 @@ export const AuthenticationStore = webpack.getByProps<Types.AuthenticationStore>
   "getLoginStatus",
 );
 
-
 export const WebAuth = webpack.getByProps<Types.WebAuth>("IncompatibleBrowser");
 
 export const LoginUtils = webpack.getByProps<Types.LoginUtils>("login", "logout");
