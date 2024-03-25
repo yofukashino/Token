@@ -2,15 +2,15 @@ import { toast as Toasts } from "replugged/common";
 import { ContextMenu } from "replugged/components";
 import { PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { AuthenticationStore, DiscordNative } from "../lib/requiredModules";
+import { AuthenticationStore } from "../lib/requiredModules";
 import Icons from "./Icons";
 export default (
   <ContextMenu.MenuItem
-    {...{
-      label: "Copy Token",
-      id: "copy-token",
-      icon: () => Icons.auth("20", "20"),
-      action: () => {
+
+      label= "Copy Token"
+      id="copy-token"
+      icon={() => <Icons.auth width="20" height="20" />}
+      action={() => {
         try {
           const token = AuthenticationStore.getToken();
           if (!token) {
@@ -27,7 +27,7 @@ export default (
           if (SettingValues.get("showToast", defaultSettings.showToast))
             Toasts.toast(`Error: ${error}.`, Toasts.Kind.FAILURE);
         }
-      },
-    }}
+      }}
+    
   />
 );

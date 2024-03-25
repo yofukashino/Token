@@ -6,12 +6,12 @@ Also Adds option to login from token on login form.
 
 **Do not share your token.**
 
-Direct Download Link: [dev.tharki.Token.asar](https://github.com/Tharki-God/Token/releases/latest/download/dev.tharki.Token.asar)
+Direct Download Link: [dev.tharki.Token.asar](https://github.com/YofukashiNo/Token/releases/latest/download/dev.tharki.Token.asar)
 
 Install Link:
 [![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=dev.tharki.Token)
 
-![image](https://tharki-god.github.io/files-random-host/bdpluginsassets/token.png)
+![image](https://YofukashiNo.github.io/files-random-host/bdpluginsassets/token.png)
 
 > For issues related to plugin either DM the dev or ask in support server listed below.
 >

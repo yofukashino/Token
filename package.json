@@ -15,25 +15,26 @@
     "eslint:check": "eslint ./src",
     "prettier:fix": "prettier ./src --write",
     "eslint:fix": "eslint ./src --fix",
-    "lint": "pnpm run prettier:check && pnpm run eslint:check && pnpm run check",
+    "lint": "pnpm run prettier:check & pnpm run eslint:check & pnpm run check",
     "lint:fix": "pnpm run prettier:fix && pnpm run eslint:fix"
   },
   "keywords": [],
-  "author": "Ahlawat",
+  "author": "Nanakusa",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^18.17.6",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
-    "eslint": "^8.47.0",
+    "@types/node": "^18.18.6",
+    "@types/react": "^18.2.31",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "eslint": "^8.52.0",
     "eslint-config-dmitmel": "github:dmitmel/eslint-config-dmitmel",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "^7.33.2",
     "prettier": "^2.8.8",
-    "replugged": "^4.7.4",
+    "replugged": "^4.7.7",
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@types/react": "^18.2.20"
+    "discord-types": "^1.3.3"
   }
 }

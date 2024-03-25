@@ -16,7 +16,7 @@ export default (): void => {
     ],
     executor: (interaction) => {
       try {
-        const token = AuthenticationStore.getToken() as string;
+        const token = AuthenticationStore.getToken();
         if (!token) {
           PluginLogger.error(`Whoops! I couldn't find your token.`);
           return {

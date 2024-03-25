@@ -8,16 +8,16 @@ export const PluginInjectorUtils = PluginInjector.utils;
 export const SettingValues = await settings.init("dev.tharki.Token", defaultSettings);
 import TokenMenuItem from "./Components/MenuItem";
 import HBCM from "./lib/HomeButtonContextMenuApi";
-import applyInjections from "./patches/index";
+import Injections from "./patches/index";
 
 export const start = (): void => {
   registerSettings();
-  HBCM.addItem("Token", TokenMenuItem);
-  applyInjections();
+  HBCM.getAPI().addItem("Token", TokenMenuItem);
+  Injections.applyInjections();
 };
 
 export const stop = (): void => {
-  HBCM.removeItem("Token");
+  HBCM.getAPI().removeItem("Token");
   PluginInjector.uninjectAll();
 };
 
