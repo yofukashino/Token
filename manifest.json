@@ -1,18 +1,18 @@
 {
-  "id": "dev.tharki.ShowHiddenChannels",
-  "name": "ShowHiddenChannels",
-  "description": "A replugged plugin which displays all hidden Channels, which can't be accessed due to Role Restrictions, this won't allow you to read them (impossible).",
-  "image": "https://i.imgur.com/pE1sQz5.png",
-  "source": "https://github.com/YofukashiNo/ShowHiddenChannels",
+  "id": "dev.tharki.Token",
+  "name": "Token",
+  "description": "Get an option to copy your token by right clicking on the home button.",
+  "image": "https://i.imgur.com/2LPLdm3.png",
+  "source": "https://github.com/YofukashiNo/Token",
   "author": {
     "name": "Nanakusa",
     "discordID": "1121961711080050780",
     "github": "YofukashiNo"
   },
-  "version": "1.3.7",
+  "version": "1.1.0",
   "updater": {
     "type": "store",
-    "id": "dev.tharki.ShowHiddenChannels"
+    "id": "dev.tharki.Token"
   },
   "license": "MIT",
   "type": "replugged-plugin",
