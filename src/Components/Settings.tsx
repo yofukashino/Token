@@ -22,3 +22,5 @@ export const Settings = () => {
     </div>
   );
 };
+
+export default { registerSettings, Settings };
