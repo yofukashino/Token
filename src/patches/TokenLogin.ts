@@ -5,7 +5,6 @@ import { TokenLoginLink } from "../Components/TokenLogin";
 import Types from "../types";
 export default (): void => {
   PluginInjector.before(WebAuth, "default", (args) => {
-    console.log(args);
     const [props] = args;
     const container = util.findInReactTree(props, (c: Types.ReactTree) =>
       c?.props?.children?.some?.((m) =>
