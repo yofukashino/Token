@@ -1,11 +1,11 @@
 import { modal as ModalUtils, React } from "replugged/common";
 import { Button, Modal, Text, TextInput } from "replugged/components";
-import { LoginUtils, WebAuth } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 export const TokenLoginForm = (props) => {
   const [token, setToken] = React.useState(null);
   const handleLogin = () => {
     if (!token) return;
-    LoginUtils.loginToken(token);
+    Modules.LoginUtils.loginToken(token);
     props.onClose();
   };
   return (
@@ -31,12 +31,12 @@ export const TokenLoginForm = (props) => {
     </Modal.ModalRoot>
   );
 };
-export const TokenLoginLink = (
-  <WebAuth.Button
-    color={WebAuth.Button.Colors.LINK}
-    look={WebAuth.Button.Looks.LINK}
+export const TokenLoginLink = () => (
+  <Modules.WebAuth.Button
+    color={Modules.WebAuth.Button.Colors.LINK}
+    look={Modules.WebAuth.Button.Looks.LINK}
     className="token-login"
     onClick={() => ModalUtils.openModal((props) => <TokenLoginForm {...props} />)}>
     Login With Token
-  </WebAuth.Button>
+  </Modules.WebAuth.Button>
 );

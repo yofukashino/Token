@@ -19,7 +19,7 @@ export default class HomeButtonContextMenuApi {
           .sort((a, b) => a?.props?.label?.localeCompare(b?.props?.label))
       : [];
     const HomeButtonContextMenu = (props) => (
-      <ContextMenu.ContextMenu {...props} navId="tharki">
+      <ContextMenu.ContextMenu {...props} navId="yofukashino">
         {...HomeButtonContextMenuItems}
       </ContextMenu.ContextMenu>
     );

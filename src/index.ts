@@ -8,12 +8,12 @@ export const SettingValues = await settings.init("dev.tharki.Token", defaultSett
 import Settings from "./Components/Settings";
 import TokenMenuItem from "./Components/MenuItem";
 import HBCM from "./lib/HomeButtonContextMenuApi";
-import Injections from "./patches";
+import Injections from "./injections";
 
 export const start = (): void => {
   Settings.registerSettings();
   HBCM.getAPI().addItem("Token", TokenMenuItem);
-  Injections.applyInjections();
+  void Injections.applyInjections();
 };
 
 export const stop = (): void => {

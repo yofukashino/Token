@@ -112,7 +112,12 @@ export namespace Types {
     initialize: DefaultTypes.AnyFunction;
     isAuthenticated: DefaultTypes.AnyFunction;
   }
-
+  export interface Modules {
+    loadModules?: () => Promise<void>;
+    AuthenticationStore?: AuthenticationStore;
+    WebAuth?: WebAuth;
+    LoginUtils?: LoginUtils;
+  }
   export interface Settings {
     showToast: boolean;
   }

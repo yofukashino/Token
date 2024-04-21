@@ -1,5 +1,5 @@
 import { PluginInjectorUtils, PluginLogger } from "../index";
-import { AuthenticationStore } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 import Types from "../types";
 export default (): void => {
   PluginInjectorUtils.registerSlashCommand({
@@ -16,7 +16,7 @@ export default (): void => {
     ],
     executor: (interaction) => {
       try {
-        const token = AuthenticationStore.getToken();
+        const token = Modules.AuthenticationStore?.getToken();
         if (!token) {
           PluginLogger.error(`Whoops! I couldn't find your token.`);
           return {
