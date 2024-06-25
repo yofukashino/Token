@@ -1,10 +1,12 @@
-import { util } from "replugged";
+import { util, webpack } from "replugged";
 import { PluginInjector } from "../index";
 import Modules from "../lib/requiredModules";
 import { TokenLoginLink } from "../Components/TokenLogin";
 import Types from "../types";
 export default (): void => {
-  PluginInjector.before(Modules.WebAuth, "default", (args) => {
+  const { WebAuth } = Modules;
+  const loader = webpack.getFunctionKeyBySource(WebAuth, ".authBoxExpanded") as "default";
+  PluginInjector.before(WebAuth, loader, (args) => {
     const [props] = args;
     const container = util.findInReactTree(props, (c: Types.ReactTree) =>
       c?.props?.children?.some?.((m) =>

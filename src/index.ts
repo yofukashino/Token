@@ -13,7 +13,7 @@ import Injections from "./injections";
 export const start = (): void => {
   Settings.registerSettings();
   HBCM.getAPI().addItem("Token", TokenMenuItem);
-  void Injections.applyInjections();
+  void Injections.applyInjections().catch((err) => PluginLogger.error(err));
 };
 
 export const stop = (): void => {

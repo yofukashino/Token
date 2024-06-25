@@ -1,6 +1,8 @@
+import { webpack } from "replugged";
 import { modal as ModalUtils, React } from "replugged/common";
-import { Button, Modal, Text, TextInput } from "replugged/components";
+import { Button, Modal, Flex, Text, TextInput } from "replugged/components";
 import Modules from "../lib/requiredModules";
+import Types from "../types";
 export const TokenLoginForm = (props) => {
   const [token, setToken] = React.useState(null);
   const handleLogin = () => {
@@ -11,8 +13,10 @@ export const TokenLoginForm = (props) => {
   return (
     <Modal.ModalRoot className="login-with-token" size="small" {...props}>
       <Modal.ModalHeader className="token-login-header">
-        <Text tag="h3">Login With Token</Text>
-        <Modal.ModalCloseButton onClick={props.onClose} className="token-login-close" />
+        <Flex justify={Flex.Justify.BETWEEN} align={Flex.Align.CENTER}>
+          <Text tag="h3">Login With Token</Text>
+          <Modal.ModalCloseButton onClick={props.onClose} className="token-login-close" />
+        </Flex>
       </Modal.ModalHeader>
       <Modal.ModalContent>
         <TextInput
@@ -31,12 +35,19 @@ export const TokenLoginForm = (props) => {
     </Modal.ModalRoot>
   );
 };
-export const TokenLoginLink = () => (
-  <Modules.WebAuth.Button
-    color={Modules.WebAuth.Button.Colors.LINK}
-    look={Modules.WebAuth.Button.Looks.LINK}
-    className="token-login"
-    onClick={() => ModalUtils.openModal((props) => <TokenLoginForm {...props} />)}>
-    Login With Token
-  </Modules.WebAuth.Button>
-);
+export const TokenLoginLink = () => {
+  const Button = webpack.getExportsForProps<Types.WebAuth["Button"]>(Modules.WebAuth, [
+    "Colors",
+    "Sizes",
+    "Looks",
+  ]);
+  return (
+    <Button
+      color={Button.Colors.LINK}
+      look={Button.Looks.LINK}
+      className="token-login"
+      onClick={() => ModalUtils.openModal((props) => <TokenLoginForm {...props} />)}>
+      Login With Token
+    </Button>
+  );
+};

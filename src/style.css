@@ -1,5 +1,3 @@
-.token-login-header [class*="close"] {
-  position: absolute;
-  right: 2.25%;
-  top: 12%;
+.token-login-header {
+  box-shadow: unset !important;
 }

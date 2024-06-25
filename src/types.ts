@@ -1,6 +1,8 @@
 import { types } from "replugged";
 import type Util from "replugged/dist/renderer/util";
 import type HBCM from "./lib/HomeButtonContextMenuApi";
+import { Store } from "replugged/dist/renderer/modules/common/flux";
+
 export namespace Types {
   export import DefaultTypes = types;
   export type ReactTree = Util.Tree & React.ReactElement;
@@ -86,7 +88,7 @@ export namespace Types {
     verifySSOToken: DefaultTypes.AnyFunction;
   }
 
-  export interface AuthenticationStore {
+  export interface AuthenticationStore extends Store {
     allowLogoutRedirect: DefaultTypes.AnyFunction;
     didVerifyFail: DefaultTypes.AnyFunction;
     didVerifySucceed: DefaultTypes.AnyFunction;
