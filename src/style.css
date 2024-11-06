@@ -1,3 +1,11 @@
 .token-login-header {
   box-shadow: unset !important;
 }
+
+.token-login {
+  margin-top: 4px;
+}
+
+[class*="authBoxExpanded"]:not([class*="card"]) .token-login {
+  margin-bottom: 20px;
+}

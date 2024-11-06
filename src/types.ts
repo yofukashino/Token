@@ -128,7 +128,7 @@ export default Types;
 
 declare global {
   interface Window {
-    HomeButtonContextMenuApi: HBCM;
+    symbol: HBCM;
   }
   export const DiscordNative: {
     accessibility: {

@@ -35,7 +35,7 @@ export const TokenLoginForm = (props) => {
     </Modal.ModalRoot>
   );
 };
-export const TokenLoginLink = () => {
+export default () => {
   const Button = webpack.getExportsForProps<Types.WebAuth["Button"]>(Modules.WebAuth, [
     "Colors",
     "Sizes",

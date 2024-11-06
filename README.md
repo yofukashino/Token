@@ -8,7 +8,7 @@ Also Adds option to login from token on login form.
 
 
 Direct Download Link: 
-[![dev.tharki.Token.asar](https://img.shields.io/github/downloads/YofukashiNo/Token/total.svg?style=social&label=Direct%20Download)](https://GitHub.com/YofukashiNo/Token/releases/latest/download/dev.tharki.Token.asar)
+[![dev.tharki.Token.asar](https://img.shields.io/github/downloads/yofukashino/Token/total.svg?style=social&label=Direct%20Download)](https://GitHub.com/yofukashino/Token/releases/latest/download/dev.tharki.Token.asar)
 
 
 Install Link:
@@ -38,17 +38,17 @@ Install Link:
 - Just make a pull request
 
 ### How Do I support without pull request?
-- You Can Donate on my [ko-fi](https://ko-fi.com/yofukashino) or UPI at `yofukashi.no.singh@fam`
+- You Can Donate on my [ko-fi](https://ko-fi.com/yofukashino) or UPI at `yofukashinooo@oksbi`
 
 [![Buy Me a Coffee at ko-fi.com](https://storage.ko-fi.com/cdn/kofi3.png?v=3)](https://ko-fi.com/yofukashino)
 
 ### Where can I find other plugins by you?
 
-You can find them [here](https://github.com/YofukashiNo/RepluggedPlugins)
+You can find them [here](https://github.com/yofukashino/RepluggedPlugins)
 
 ### This plugin isn't listed in the all plugin list?
 
-PRs are appreciated or just make an issue on the [repo](https://github.com/YofukashiNo/RepluggedPlugins)
+PRs are appreciated or just make an issue on the [repo](https://github.com/yofukashino/RepluggedPlugins)
 
 
 ### Where can I find the support?

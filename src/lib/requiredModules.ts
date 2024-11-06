@@ -8,10 +8,7 @@ Modules.loadModules = async (): Promise<void> => {
     webpack.getByStoreName<Types.AuthenticationStore>("AuthenticationStore");
 
   Modules.WebAuth ??= await webpack
-    .waitForModule<Types.WebAuth>(
-      webpack.filters.bySource("Messages.MULTI_ACCOUNT_SERVER_INVITE_JOINING_AS"),
-      { timeout: 10000 },
-    )
+    .waitForModule<Types.WebAuth>(webpack.filters.bySource(".joiningAsAvatar,"), { timeout: 10000 })
     .catch(() => {
       throw new Error("Failed To Find WebAuth Module");
     });
