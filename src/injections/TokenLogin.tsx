@@ -1,32 +1,23 @@
 import { util, webpack } from "replugged";
-import { Flex } from "replugged/components";
-import { PluginInjector } from "../index";
-import Modules from "../lib/requiredModules";
-import TokenLoginLink from "../Components/TokenLogin";
-import Types from "../types";
+import { PluginInjector } from "@this";
+import { WebAuth } from "@lib/RequiredModules";
+import TokenLoginLink from "@components/TokenLogin";
+import Types from "@Types";
 
-export default (): void => {
-  const { WebAuth } = Modules;
-  const loader = webpack.getFunctionKeyBySource(WebAuth, ".authBoxExpanded") as "default";
-  PluginInjector.before(WebAuth, loader, (args) => {
-    const [props] = args;
-    const container = util.findInReactTree(props, (c: Types.ReactTree) =>
-      c?.props?.children?.some?.((m) => m?.props?.onClick?.toString()?.includes(".forgotPassword")),
-    ) as Types.ReactTree;
-    if (!container) return args;
-    const FPLIndex = container?.props?.children.findIndex((m) =>
-      m?.props?.onClick?.toString()?.includes(".forgotPassword"),
-    );
-    const FPL = container?.props?.children.splice(FPLIndex, 1);
-    if (!container?.props?.children.some((c) => c?.props?.className === "yofukashino-token"))
-      container?.props?.children?.splice(
-        FPLIndex,
-        0,
-        <Flex direction={Flex.Direction.HORIZONTAL} justify={Flex.Justify.BETWEEN}>
-          {FPL}
-          <TokenLoginLink />
-        </Flex>,
-      );
-    return args;
-  });
-};
+const loader = webpack.getFunctionKeyBySource(WebAuth, ".authBoxExpanded");
+
+PluginInjector.before(WebAuth, loader, (args: [Record<string, unknown>]) => {
+  const [props] = args;
+  const container = util.findInReactTree(props, (c: Types.ReactTree) =>
+    c?.props?.children?.some?.((m) => m?.props?.onClick?.toString()?.includes(".forgotPassword")),
+  ) as Types.ReactTree;
+  if (!container) return args;
+  console.log(container?.props?.children);
+  const FPLIndex = container?.props?.children.findIndex((m) =>
+    m?.props?.onChange?.toString()?.includes("loginPrefix:"),
+  );
+  const FPL = container?.props?.children.splice(FPLIndex, 1);
+  if (!container?.props?.children.some((c) => c?.props?.className === "yofukashino-token"))
+    container?.props?.children?.splice(FPLIndex, 0, FPL, <TokenLoginLink />);
+  return args;
+});

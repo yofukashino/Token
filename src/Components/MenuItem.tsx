@@ -1,31 +1,33 @@
-import { toast as Toasts } from "replugged/common";
+import { toast } from "replugged/common";
 import { ContextMenu } from "replugged/components";
-import { PluginLogger, SettingValues } from "../index";
-import { defaultSettings } from "../lib/consts";
-import Modules from "../lib/requiredModules";
-import Icons from "./Icons";
-export default (
-  <ContextMenu.MenuItem
-    label="Copy Token"
-    id="copy-token"
-    icon={() => <Icons.auth width="20" height="20" />}
-    action={() => {
-      try {
-        const token = Modules.AuthenticationStore?.getToken();
-        if (!token) {
-          PluginLogger.error(`Whoops! I couldn't find your token.`);
-          if (SettingValues.get("showToast", defaultSettings.showToast))
-            Toasts.toast(`Whoops! I couldn't find your token.`, Toasts.Kind.FAILURE);
-          return;
+import { PluginLogger, SettingValues } from "@this";
+import { DefaultSettings } from "@consts";
+import { AuthenticationStore } from "@lib/RequiredModules";
+import Icons from "@Icons";
+
+export default (): React.ReactElement | null => {
+  const showToast = SettingValues.get("showToast", DefaultSettings.showToast);
+  const token = AuthenticationStore.getToken?.();
+
+  if (!token) {
+    PluginLogger.error("Failed to find your token");
+    return null;
+  }
+
+  return (
+    <ContextMenu.MenuItem
+      label="Copy Token"
+      id="copy-token"
+      icon={() => <Icons.auth width="20" height="20" />}
+      action={() => {
+        try {
+          DiscordNative.clipboard.copy(token);
+          if (showToast) toast.toast(`Token Copied to Clipboard.`, toast.Kind.SUCCESS);
+        } catch (error) {
+          if (showToast) toast.toast(` Copying the token.`, toast.Kind.FAILURE);
+          PluginLogger.error(error);
         }
-        DiscordNative.clipboard.copy(token);
-        if (SettingValues.get("showToast", defaultSettings.showToast))
-          Toasts.toast(`Token Copied to Clipboard.`, Toasts.Kind.SUCCESS);
-      } catch (error) {
-        PluginLogger.error(error);
-        if (SettingValues.get("showToast", defaultSettings.showToast))
-          Toasts.toast(`Error: ${error}.`, Toasts.Kind.FAILURE);
-      }
-    }}
-  />
-);
+      }}
+    />
+  );
+};

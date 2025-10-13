@@ -1,25 +1,27 @@
 import { util } from "replugged";
-import { SwitchItem } from "replugged/components";
-import { PluginLogger, SettingValues } from "../index";
-import { defaultSettings } from "../lib/consts";
-import Types from "../types";
+import { Switch } from "replugged/components";
+import { PluginLogger, SettingValues } from "@this";
+import { DefaultSettings } from "@consts";
 
 export const registerSettings = (): void => {
-  for (const key in defaultSettings) {
-    if (SettingValues.has(key as keyof Types.Settings)) return;
-    PluginLogger.log(`Adding new setting ${key} with value ${defaultSettings[key]}.`);
-    SettingValues.set(key as keyof Types.Settings, defaultSettings[key]);
+  type DefaultSettings = typeof DefaultSettings;
+  type key = keyof DefaultSettings;
+  type value = DefaultSettings[key];
+
+  for (const key in DefaultSettings) {
+    if (SettingValues.has(key as key)) return;
+    PluginLogger.log(`Adding new setting ${key} with value ${DefaultSettings[key]}.`);
+    SettingValues.set(key as key, DefaultSettings[key] as value);
   }
 };
-export const Settings = () => {
+
+export const Settings = (): React.ReactElement => {
   return (
-    <div>
-      <SwitchItem
-        note="Get a confirmation/error toast when copying your token."
-        {...util.useSetting(SettingValues, "showToast", defaultSettings.showToast)}>
-        Pop-up/Toast
-      </SwitchItem>
-    </div>
+    <Switch
+      label={"Pop-up/Toast"}
+      description="Get a confirmation/error toast when copying your token."
+      {...util.useSetting(SettingValues, "showToast", DefaultSettings.showToast)}
+    />
   );
 };
 

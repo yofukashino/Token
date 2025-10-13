@@ -1,9 +1,11 @@
-import Modules from "../lib/requiredModules";
-import addSlashCommand from "./SlashCommand";
-import injectTokenLogin from "./TokenLogin";
+import { PluginInjector } from "@this";
+import Modules from "@lib/RequiredModules";
+
 export const applyInjections = async (): Promise<void> => {
   await Modules.loadModules();
-  addSlashCommand();
-  injectTokenLogin();
+  await import("./SlashCommand");
+  await import("./TokenLogin");
 };
-export default { applyInjections };
+export const removeInjections = (): void => PluginInjector.uninjectAll();
+
+export default { applyInjections, removeInjections };
