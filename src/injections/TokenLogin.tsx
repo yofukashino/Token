@@ -12,7 +12,7 @@ PluginInjector.before(WebAuth, loader, (args: [Types.ReactTree]) => {
     c?.props?.children?.some?.((m) => m?.props?.onClick?.toString()?.includes(".forgotPassword")),
   ) as Types.ReactTree;
   if (!container) return args;
-  console.log(container?.props?.children);
+
   const FPLIndex = container?.props?.children.findIndex((m) =>
     m?.props?.onChange?.toString()?.includes("loginPrefix:"),
   );
