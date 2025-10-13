@@ -16,18 +16,19 @@ class HomeContext {
     this.#items.delete(id);
   }
   public open(event: React.MouseEvent): void {
-    const items = this.#items.size
-      ? Array.from(this.#items.values())
-          .map((i) => i())
-          .filter(Boolean)
-          .sort((a, b) => a?.props?.label?.localeCompare(b?.props?.label))
-      : [];
-
-    contextMenu.open(event, (props) => (
-      <ContextMenu.ContextMenu {...props} navId={this.#navId} onClose={contextMenu.close}>
-        {...items}
-      </ContextMenu.ContextMenu>
-    ));
+    contextMenu.open(event, (props) => {
+      const items = this.#items.size
+        ? Array.from(this.#items.values())
+            .map((i) => i())
+            .filter(Boolean)
+            .sort((a, b) => a?.props?.label?.localeCompare(b?.props?.label))
+        : [];
+      return (
+        <ContextMenu.ContextMenu {...props} navId={this.#navId} onClose={contextMenu.close}>
+          {...items}
+        </ContextMenu.ContextMenu>
+      );
+    });
   }
 
   private static MODULE_ID = "HomeContext" as const;
