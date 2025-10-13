@@ -6,7 +6,7 @@ import Types from "@Types";
 
 const loader = webpack.getFunctionKeyBySource(WebAuth, ".authBoxExpanded");
 
-PluginInjector.before(WebAuth, loader, (args: [Record<string, unknown>]) => {
+PluginInjector.before(WebAuth, loader, (args: [Types.ReactTree]) => {
   const [props] = args;
   const container = util.findInReactTree(props, (c: Types.ReactTree) =>
     c?.props?.children?.some?.((m) => m?.props?.onClick?.toString()?.includes(".forgotPassword")),

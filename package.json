@@ -30,11 +30,9 @@
     "globals": "^16.0.0",
     "prettier": "^3.5.3",
     "replugged": "^4.11.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.30.1"
-  },
-  "dependencies": {
-    "discord-types": "^1.3.3",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.0",
     "jiti": "^2.6.1"
-  }
+  },
+  "dependencies": {}
 }
